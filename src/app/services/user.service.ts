@@ -29,15 +29,14 @@ export class UserService {
        myToken.id = "0";
        myToken.user = "bad credentials";
        myToken.token = "";
-    }  
+    }
 
     return myToken;
   }
 
 
   createUser(myUser: User): User {
-
-    console.log("email ... " + myUser.email);
+console.log("email ... " + myUser.email);
     console.log("password ... " + myUser.password);
 
     var myNewUser = new User();
@@ -46,7 +45,7 @@ export class UserService {
     // Success
     myNewUser.id = 0;
 
-    
+
     if ( myNewUser.id != 0 )
     {
        console.log("Success " + myNewUser.id);
@@ -61,10 +60,12 @@ export class UserService {
        console.log("Error" + myNewUser.id);
 
        myNewUser.id = 0; // Error
-    } 
+    }
 
    return myNewUser;
- } 
+
+
+  }
 
 
   resetPassword(email : String, password : String, token : String) : String {
@@ -75,7 +76,7 @@ export class UserService {
    this.destroyToken(token);
 
    return "" + isResetPassword;
-   
+
   }
 
   sendUrlResetPassword(email: String): User {
@@ -97,25 +98,25 @@ export class UserService {
   }
 
   sendEmail(email: String, urlReset: String) : String {
-    
+
    var emailSuccess = 0;
 
    // send email using SMTP (gmail, outlook..)
 
-   // email sentng serve 
+   // email sent
    emailSuccess = 1;
    console.log('sent to :' + email);
    console.log('url : ' + urlReset);
-   
-   return "" + emailSuccess; 
-  
+
+   return "" + emailSuccess;
+
   }
   createUrlReset(email: String) : String {
     var myUrlReset = "" +
         this.createBaseURL() +
-        "/" +   
-        email +  
-        "/" + 
+        "/" +
+        email +
+        "/" +
         this.createTokenReset(email)
 
      return myUrlReset;
@@ -159,20 +160,20 @@ export class UserService {
        console.log("Error" + myUser.id);
 
        myUser.id = 0; // Error
-    } 
-    
+    }
+
     return myUser;
-  
+
   }
 
 
 
   validateToken(email: String, token: String) : String {
 
-    // call api to validate token 
+    // call api to validate token
     // success
     console.log('validating token ... ' + token);
-    
+
     var validToken = 1;
     return ""+validToken;
 
